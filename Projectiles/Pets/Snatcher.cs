@@ -112,19 +112,8 @@ namespace AlchemistNPC.Projectiles.Pets
 					{
 						if (projectile.ai[0] > 60f)
 						{
-							int dmg = 1;
-							if (player.HeldItem.damage < 50)
-							{
-								dmg = player.HeldItem.damage*4;
-							}
-							else if (player.HeldItem.damage < 100)
-							{
-								dmg = player.HeldItem.damage*2;
-							}
-							else
-							{
-								dmg = player.HeldItem.damage/2;
-							}
+							int dmg = player.HeldItem.damage/2;
+							
 							Vector2 vel = new Vector2(0, -1);
 							vel *= 10f;
 							Main.PlaySound(SoundID.DD2_ExplosiveTrapExplode.WithVolume(.8f), projectile.position);
@@ -142,6 +131,7 @@ namespace AlchemistNPC.Projectiles.Pets
 								Projectile.NewProjectile(target.Center.X, target.Center.Y+48, perturbedSpeed4.X, perturbedSpeed4.Y, mod.ProjectileType("ShadowBurst"), dmg, 0, Main.myPlayer, 0f, 0f);
 							}
 							projectile.ai[0] = 0f;
+							return;
 						}
 					}
 				}
